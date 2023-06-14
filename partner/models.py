@@ -8,6 +8,7 @@ class Partner(DateTimeLog):
     name = models.CharField(max_length=200, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to='AtArctic/partners/', null=True, blank=True)
+    index = models.IntegerField(default=0, null=True, blank=True)
 
     def save(self, *args, **kwargs):
         if not Partner.objects.filter(id=self.id).exists() and Partner.objects.all().exists():
