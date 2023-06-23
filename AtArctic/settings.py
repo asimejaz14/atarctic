@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     "common",
     "inquiry",
     "partner",
+    "design",
 ]
 
 MIDDLEWARE = [

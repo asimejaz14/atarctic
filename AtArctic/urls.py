@@ -27,6 +27,7 @@ extra_patterns = [
     path('inquiries/', include('inquiry.urls')),
     path('partners', include('partner.urls')),
     path('partners/', include('partner.urls')),
+    path('design/', include('design.urls')),
 ]
 
 
