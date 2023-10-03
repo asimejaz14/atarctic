@@ -1,3 +1,12 @@
 from django.db import models
+from common.enums import STATUS, Status
+from common.models import DateTimeLog
 
-# Create your models here.
+
+class User(DateTimeLog):
+    username = models.CharField(max_length=128, null=True, blank=True)
+    password = models.CharField(max_length=128)
+    status = models.CharField(max_length=1, choices=STATUS, default=Status.ACTIVE)
+
+    def __str__(self):
+        return self.username

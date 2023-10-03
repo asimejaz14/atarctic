@@ -7,6 +7,14 @@ PRODUCT_SORTING_KEYS = {
     "updated_at": "updated_at",
     "status": "order_status",
 }
+PARTNER_SORTING_KEYS = {
+    "index": "index",
+    "created_at": "created_at",
+    "customer_name": "customer_name",
+    "tracking_number": "tracking_number",
+    "updated_at": "updated_at",
+    "status": "order_status",
+}
 FAQ_SORTING_KEYS = {
     "index": "index",
     "created_at": "created_at",
