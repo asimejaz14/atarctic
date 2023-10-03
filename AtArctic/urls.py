@@ -28,6 +28,10 @@ extra_patterns = [
     path('partners', include('partner.urls')),
     path('partners/', include('partner.urls')),
     path('design/', include('design.urls')),
+    path('faqs', include('faq.urls')),
+    path('faqs/', include('faq.urls')),
+    path('users', include('user.urls')),
+    path('users/', include('user.urls')),
 ]
 
 
