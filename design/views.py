@@ -4,7 +4,7 @@ from django.shortcuts import render
 from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
 
-from design.design_controller import BannerController
+from design.design_controller import BannerController, MissionController
 from design.design_controller import FooterController
 
 from design.design_controller import AboutController
@@ -41,3 +41,20 @@ class AboutView(APIView):
 
     def post(self, request):
         return self.about_controller.post_about_text(request)
+
+
+class MissionView(APIView):
+    mission_controller = MissionController
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        return self.mission_controller.get_mission_text(request)
+
+    def post(self, request):
+        return self.mission_controller.post_mission_text(request)
+
+    def patch(self, request):
+        return self.mission_controller.update_mission_text(request)
+
+    def delete(self, request):
+        return self.mission_controller.delete_mission_text(request)

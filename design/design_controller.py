@@ -1,5 +1,5 @@
 from rest_framework.response import Response
-from rest_framework.status import HTTP_200_OK, HTTP_204_NO_CONTENT
+from rest_framework.status import HTTP_200_OK, HTTP_204_NO_CONTENT, HTTP_404_NOT_FOUND
 
 from design.models import Design
 
@@ -66,3 +66,44 @@ class AboutController:
         about = Design.objects.create(about=request.data.get('about'))
 
         return Response(data={"data": about.about}, status=HTTP_200_OK)
+
+
+class MissionController:
+
+    @classmethod
+    def get_mission_text(cls, request):
+        mission = Design.objects.first()
+        if mission:
+            return Response(data={"data": mission.mission}, status=HTTP_200_OK)
+        return Response(data=None, status=HTTP_204_NO_CONTENT)
+
+    @classmethod
+    def post_mission_text(cls, request):
+        mission = Design.objects.first()
+        if mission:
+            mission.mission = request.data.get('mission')
+            mission.save()
+            return Response(data={"data": mission.mission}, status=HTTP_200_OK)
+        mission = Design.objects.create(about=request.data.get('mission'))
+
+        return Response(data={"data": mission.mission}, status=HTTP_200_OK)
+
+    @classmethod
+    def update_mission_text(cls, request):
+        mission = Design.objects.first()
+        if mission:
+            # Updating the mission text with the new value from the request data
+            mission.mission = request.data.get('mission')
+            mission.save()
+            return Response(data={"data": mission.mission}, status=HTTP_200_OK)
+        return Response(data=None, status=HTTP_404_NOT_FOUND)
+
+    @classmethod
+    def delete_mission_text(cls, request):
+        mission = Design.objects.first()
+        if mission:
+            # Deleting the mission object
+            mission.mission = None
+            mission.save()
+            return Response(data=None, status=HTTP_200_OK)
+        return Response(data=None, status=HTTP_404_NOT_FOUND)
