@@ -30,8 +30,8 @@ extra_patterns = [
     path('design/', include('design.urls')),
     path('faqs', include('faq.urls')),
     path('faqs/', include('faq.urls')),
-    path('users', include('user.urls')),
-    path('users/', include('user.urls')),
+    path('user', include('user.urls')),
+    path('user/', include('user.urls')),
 ]
 
 
