@@ -22,8 +22,8 @@ class FAQController:
                 serialized_faq = FAQSerializer(faq)
                 return Response(data=serialized_faq.data, status=HTTP_200_OK)
             kwargs = {}
-            order_by = get_default_query_param(request, "order_by", "index")
-            order = get_default_query_param(request, "order", "asc")
+            order_by = get_default_query_param(request, "order_by", "created_at")
+            order = get_default_query_param(request, "order", "desc")
 
             if order == "asc":
                 sort = FAQ_SORTING_KEYS[order_by]
