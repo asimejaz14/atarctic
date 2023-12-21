@@ -227,6 +227,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'your_email@example.com'
 EMAIL_HOST_PASSWORD = 'your_email_password'
+SESSION_COOKIE_SECURE = True
 # try:
 #     from AtArctic.local_settings import *
 # except:
