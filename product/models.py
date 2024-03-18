@@ -12,6 +12,7 @@ class Product(DateTimeLog):
     description = models.TextField(null=True, blank=True)
     background_video = models.FileField(null=True, blank=True)
     index = models.IntegerField(default=0, null=True, blank=True)
+    is_display = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         if not Product.objects.filter(id=self.id).exists() and Product.objects.all().exists():
