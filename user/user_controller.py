@@ -79,7 +79,7 @@ class UserController:
             password = request.data.get('password')
             user = User.objects.get(username=username, password=password)
             if user:
-                return Response(data=user.username, status=status.HTTP_200_OK)
+                return Response(data={'username': user.username, 'is_restricted': user.is_restricted}, status=status.HTTP_200_OK)
         except User.DoesNotExist:
             return Response(data=None, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
