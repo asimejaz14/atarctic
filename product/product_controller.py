@@ -37,7 +37,10 @@ class ProductController:
 
             if display == "homepage":
                 kwargs['status'] = Status.ACTIVE
-                kwargs['is_display'] = True
+                kwargs['is_display'] = True # to show on homepage
+
+            if display == "services":
+                kwargs['status'] = Status.ACTIVE
 
             if order == "asc":
                 sort = PRODUCT_SORTING_KEYS[order_by]
