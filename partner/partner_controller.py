@@ -4,7 +4,7 @@ from rest_framework.status import HTTP_201_CREATED, HTTP_400_BAD_REQUEST, HTTP_5
 
 from common.enums import PARTNER_SORTING_KEYS
 from common.utils import get_default_query_param
-from partner.models import Partner
+from partner.models import Partner, PartnerMedia
 from partner.serializers import PartnerSerializer
 
 
@@ -86,6 +86,17 @@ class PartnerController:
     def delete_partner(cls, request, partner_id=None):
         try:
             Partner.objects.filter(id=partner_id).delete()
+            return Response(data=None, status=HTTP_204_NO_CONTENT)
+        except Exception as e:
+            print(e)
+            return Response(data=e, status=HTTP_500_INTERNAL_SERVER_ERROR)
+
+class ImageController:
+
+    @classmethod
+    def delete_image(cls, request, image_id=None):
+        try:
+            PartnerMedia.objects.filter(id=image_id).delete()
             return Response(data=None, status=HTTP_204_NO_CONTENT)
         except Exception as e:
             print(e)

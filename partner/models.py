@@ -19,3 +19,8 @@ class Partner(DateTimeLog):
     def __str__(self):
         return self.name
 
+class PartnerMedia(DateTimeLog):
+
+    media = models.FileField(upload_to='partner-media', blank=True)
+    partner = models.ForeignKey(Partner, null=True, blank=True, on_delete=models.CASCADE)
+
