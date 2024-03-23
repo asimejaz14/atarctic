@@ -4,7 +4,7 @@ from rest_framework.status import HTTP_201_CREATED, HTTP_400_BAD_REQUEST, HTTP_5
 
 from common.enums import PARTNER_SORTING_KEYS
 from common.utils import get_default_query_param
-from partner.models import Partner, PartnerMedia
+from partner.models import Partner
 from partner.serializers import PartnerSerializer
 
 
@@ -96,7 +96,7 @@ class ImageController:
     @classmethod
     def delete_image(cls, request, image_id=None):
         try:
-            PartnerMedia.objects.filter(id=image_id).delete()
+            Partner.objects.filter(id=image_id).update(image=None)
             return Response(data=None, status=HTTP_204_NO_CONTENT)
         except Exception as e:
             print(e)
