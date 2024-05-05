@@ -81,6 +81,9 @@ class ProductController:
 
             product = Product.objects.get(id=product_id)
             media = request.FILES.getlist("media")
+            payload = request.data.copy()
+            if not request.data.get("background_video"):
+                payload.pop("background_video")
             serialized_product = ProductSerializer(product, data=request.data,
                                                    context={"request": request, "media": media}, partial=True)
             if serialized_product.is_valid():
